@@ -1,24 +1,34 @@
 import propTypes from 'prop-types';
-
-// import FriendList from 'components/friendList/FriendList';
-// import friends from 'data/friends.json';
+import css from './Statistics.module.css';
 
 const Statistics = ({ title, stats }) => {
   return (
-    <div className="statistics">
-      {title && <h2 className="title">{title}</h2>}
+    <div className={css['statistics']}>
+      <div className={css['statistics-container']}>
+        {title && <h2 className={css['title']}>{title}</h2>}
 
-      <ul className="stat-list">
-        {stats.map(({ id, label, percentage }) => (
-          <li key={id} className="item">
-            <span className="label">{label}</span>
-            <span className="percentage">{percentage}%</span>
-          </li>
-        ))}
-      </ul>
-      {/* <FriendList friends={friends} /> */}
+        <ul className={css['stat-list']}>
+          {stats.map(({ id, label, percentage }) => (
+            <li
+              key={id}
+              className={css['item']}
+              style={{ backgroundColor: getRandomDarkColor() }}
+            >
+              <span className={css['label']}>{label}</span>
+              <span className={css['percentage']}>{percentage}%</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
+};
+
+const getRandomDarkColor = () => {
+  const red = Math.floor(Math.random() * 128);
+  const green = Math.floor(Math.random() * 128);
+  const blue = Math.floor(Math.random() * 128);
+  return `rgb(${red}, ${green}, ${blue})`;
 };
 
 Statistics.propTypes = {

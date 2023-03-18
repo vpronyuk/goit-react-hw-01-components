@@ -1,13 +1,13 @@
 import propTypes from 'prop-types';
+import css from './FriendList.module.css';
 
-// import TransactionHistory from '../transactionHistory/TransactionHistory';
 import { FriendListItem } from '../friendListItem/FriendListItem';
-// import transactions from 'data/transactions.json';
 
 const FriendList = ({ friends }) => {
   return (
-    <div className="friend">
-      <ul className="friend-list">
+    <div className={css['friend']}>
+      <h2 className={css['section-title']}>Friend List</h2>
+      <ul className={css['friend-list']}>
         {friends.map(({ id, avatar, name, isOnline }) => (
           <FriendListItem
             key={id}
@@ -17,10 +17,6 @@ const FriendList = ({ friends }) => {
           />
         ))}
       </ul>
-      <div>
-        <h2>Transaction History</h2>
-        {/* <TransactionHistory items={transactions} /> */}
-      </div>
     </div>
   );
 };
@@ -37,3 +33,4 @@ FriendList.propTypes = {
 };
 
 export default FriendList;
+
