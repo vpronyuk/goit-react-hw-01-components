@@ -6,7 +6,7 @@ import { FriendListItem } from '../friendListItem/FriendListItem';
 
 const FriendList = ({ friends }) => {
   return (
-    <div>
+    <div className="friend">
       <ul className="friend-list">
         {friends.map(({ id, avatar, name, isOnline }) => (
           <FriendListItem
