@@ -1,8 +1,10 @@
-import { TransactionHistory } from '../transactionHistory/TransactionHistory';
-import { FriendListItem } from '../friendListItem/FriendListItem';
-import transactions from 'data/transactions.json';
+import propTypes from 'prop-types';
 
-export const FriendList = ({ friends }) => {
+// import TransactionHistory from '../transactionHistory/TransactionHistory';
+import { FriendListItem } from '../friendListItem/FriendListItem';
+// import transactions from 'data/transactions.json';
+
+const FriendList = ({ friends }) => {
   return (
     <div>
       <ul className="friend-list">
@@ -17,8 +19,21 @@ export const FriendList = ({ friends }) => {
       </ul>
       <div>
         <h2>Transaction History</h2>
-        <TransactionHistory items={transactions} />
+        {/* <TransactionHistory items={transactions} /> */}
       </div>
     </div>
   );
 };
+
+FriendList.propTypes = {
+  friends: propTypes.arrayOf(
+    propTypes.shape({
+      id: propTypes.number.isRequired,
+      avatar: propTypes.string.isRequired,
+      name: propTypes.string.isRequired,
+      isOnline: propTypes.bool.isRequired,
+    })
+  ),
+};
+
+export default FriendList;
